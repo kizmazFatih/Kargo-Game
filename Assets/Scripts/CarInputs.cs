@@ -11,7 +11,7 @@ public class CarInputs : MonoBehaviour
 
     [HideInInspector] public float gas_input;
     [HideInInspector] public float turn_input;
-    [HideInInspector] public bool hand_brake;
+    [HideInInspector] public float hand_brake;
 
 
     public void CarMove(InputAction.CallbackContext context)
@@ -22,7 +22,7 @@ public class CarInputs : MonoBehaviour
 
     public void HandBrake(InputAction.CallbackContext context)
     {
-        hand_brake = context.started || context.performed;
-
+        if (context.started || context.performed) hand_brake = 1;
+        else { hand_brake = 0; }
     }
 }

@@ -14,6 +14,10 @@ public class GasBrake : MonoBehaviour
     [Header("GasBrake")]
     private float gas_input;
     private float available_tork;
+    private float hand_brake;
+    float hand_brake_force = 0;
+
+    [SerializeField] private bool rear_wheel;
     [SerializeField] private float top_speed;
     [SerializeField] private float acceleration, backward_acceleration;
     [SerializeField] private AnimationCurve forward_power_curve;
@@ -41,10 +45,14 @@ public class GasBrake : MonoBehaviour
             if (suspension.rayDidHit)
             {
                 gas_input = carInputs.gas_input;
+                hand_brake = carInputs.hand_brake;
+
 
                 Vector3 accel_direction = tire.forward;
                 float car_speed = Vector3.Dot(car.forward, rb.velocity);
                 float normalized_speed = Mathf.Clamp01(Mathf.Abs(car_speed) / top_speed);
+
+
 
 
                 if (gas_input >= 0)
@@ -56,8 +64,28 @@ public class GasBrake : MonoBehaviour
                     available_tork = forward_power_curve.Evaluate(normalized_speed) * gas_input * backward_acceleration;
                 }
 
+                if (rear_wheel)
+                {
+                    if (hand_brake == 1)
+                    {
+                        available_tork = 0;
+                        if (hand_brake_force > rb.velocity.magnitude)
+                        {
+                            hand_brake_force = rb.velocity.magnitude;
+                        }
+                        else
+                        {
+                            hand_brake_force = rb.mass * 0.5f * 10;
+                        }
+                    }
+                }
 
-                rb.AddForceAtPosition(available_tork * accel_direction, tire.position);
+
+
+
+
+
+                rb.AddForceAtPosition((available_tork - hand_brake_force) * accel_direction, tire.position);
 
 
             }
