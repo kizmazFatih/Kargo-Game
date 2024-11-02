@@ -271,12 +271,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 126498367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e9c4ebb9f3f53044a33be5253d689a6, type: 3}
+  m_Script: {fileID: 11500000, guid: acdeb8103e0e0d246b9e265be6145504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gas_input: 0
-  turn_input: 0
-  hand_brake: 0
+  work: 1
 --- !u!114 &126498374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,10 +284,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 126498367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7620f33f54723a64c97ecd86f903590f, type: 3}
+  m_Script: {fileID: 11500000, guid: 52f7fe5c5aefa474a827ea3b0e3e4cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  work: 1
+  gas_input: 0
+  turn_input: 0
+  hand_brake: 0
 --- !u!114 &126498375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 126498373}
+      - m_Target: {fileID: 126498374}
         m_TargetAssemblyTypeName: CarInputs, Assembly-CSharp
         m_MethodName: CarMove
         m_Mode: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
     m_ActionName: Car/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 126498373}
+      - m_Target: {fileID: 126498374}
         m_TargetAssemblyTypeName: CarInputs, Assembly-CSharp
         m_MethodName: HandBrake
         m_Mode: 0
@@ -346,8 +346,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 6e73e857-2136-44ee-a653-3e6a87085d4f
-    m_ActionName: Car/HandBrake[/Keyboard/space]
+    m_ActionId: c7d2bb4e-5199-40af-bf90-6f6706eb5028
+    m_ActionName: Car/Brake[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 458e6015-7c7e-40ae-9897-81fc715a5745
+    m_ActionName: Character/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Car
@@ -924,20 +928,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 470477771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f78a50bb4c4b47f4aa89b71b8b6bb646, type: 3}
+  m_Script: {fileID: 11500000, guid: 6659bb4b59f61524480ce71e857342a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tire: {fileID: 456449984}
   rb: {fileID: 126498368}
   ignore_layer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   rayDidHit: 0
   rest_distance: 1
   travel_distance: 0.5
   strenght: 200000
-  damping: 5000
-  tire_radius: 0.2
+  damping: 7500
+  tire_radius: 0.3
 --- !u!114 &470477775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,11 +951,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 470477771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe47af88f066ff4090656c422b1fd6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 05cafece4c39958428b620cab4b6e0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carInputs: {fileID: 126498373}
-  carController: {fileID: 126498374}
+  carInputs: {fileID: 126498374}
+  carController: {fileID: 126498373}
   tire_grip_factor: 1
   turnable: 1
   turn_power_curve:
@@ -960,17 +964,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.8
-      outSlope: -0.8
+      inSlope: -0.9
+      outSlope: -0.9
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0.2
-      inSlope: -0.8
-      outSlope: -0.8
+      value: 0.1
+      inSlope: -0.9
+      outSlope: -0.9
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -987,53 +991,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 470477771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b66c834f481b16842900d7e78f212187, type: 3}
+  m_Script: {fileID: 11500000, guid: a1da37163b731ae428c859c546512bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carInputs: {fileID: 126498373}
-  carController: {fileID: 126498374}
+  carInputs: {fileID: 126498374}
+  carController: {fileID: 126498373}
   rear_wheel: 0
-  top_speed: 50
+  backward_acceleration: 300
+  top_speed: 150
   acceleration: 500
-  backward_acceleration: 200
-  forward_power_curve:
+  power_curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0.5
-      inSlope: -0.3812176
-      outSlope: -0.3812176
-      tangentMode: 0
+      inSlope: 1.6666666
+      outSlope: 1.6666666
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 1
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.3
       value: 1
-      inSlope: 0.023190858
-      outSlope: 0.023190858
+      inSlope: 0.01819441
+      outSlope: 0.01819441
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.54500574
+      inWeight: 0.79575634
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.7
+      time: 0.6
       value: 1
-      inSlope: -0.06772755
-      outSlope: -0.06772755
+      inSlope: -0.02950547
+      outSlope: -0.02950547
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 1
+      outWeight: 0.93859667
     - serializedVersion: 3
       time: 1
       value: 0.35
-      inSlope: -0.28126928
-      outSlope: -0.28126928
-      tangentMode: 0
+      inSlope: -1.625
+      outSlope: -1.625
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 1
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1082,20 +1086,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 471216794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f78a50bb4c4b47f4aa89b71b8b6bb646, type: 3}
+  m_Script: {fileID: 11500000, guid: 6659bb4b59f61524480ce71e857342a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tire: {fileID: 1967296617}
   rb: {fileID: 126498368}
   ignore_layer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   rayDidHit: 0
   rest_distance: 1
   travel_distance: 0.5
   strenght: 200000
-  damping: 5000
-  tire_radius: 0.2
+  damping: 7500
+  tire_radius: 0.3
 --- !u!114 &471216798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,53 +1109,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 471216794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b66c834f481b16842900d7e78f212187, type: 3}
+  m_Script: {fileID: 11500000, guid: a1da37163b731ae428c859c546512bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carInputs: {fileID: 126498373}
-  carController: {fileID: 126498374}
+  carInputs: {fileID: 126498374}
+  carController: {fileID: 126498373}
   rear_wheel: 1
-  top_speed: 50
+  backward_acceleration: 300
+  top_speed: 150
   acceleration: 500
-  backward_acceleration: 200
-  forward_power_curve:
+  power_curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0.5
-      inSlope: -0.3812176
-      outSlope: -0.3812176
-      tangentMode: 0
+      inSlope: 1.6666666
+      outSlope: 1.6666666
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 1
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.3
       value: 1
-      inSlope: 0.023190858
-      outSlope: 0.023190858
+      inSlope: 0.01819441
+      outSlope: 0.01819441
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.54500574
+      inWeight: 0.79575634
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.7
+      time: 0.6
       value: 1
-      inSlope: -0.06772755
-      outSlope: -0.06772755
+      inSlope: -0.02950547
+      outSlope: -0.02950547
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 1
+      outWeight: 0.93859667
     - serializedVersion: 3
       time: 1
       value: 0.35
-      inSlope: -0.28126928
-      outSlope: -0.28126928
-      tangentMode: 0
+      inSlope: -1.625
+      outSlope: -1.625
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 1
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1165,12 +1169,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 471216794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe47af88f066ff4090656c422b1fd6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 05cafece4c39958428b620cab4b6e0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carInputs: {fileID: 126498373}
-  carController: {fileID: 126498374}
-  tire_grip_factor: 0.8
+  carInputs: {fileID: 126498374}
+  carController: {fileID: 126498373}
+  tire_grip_factor: 1
   turnable: 0
   turn_power_curve:
     serializedVersion: 2
@@ -1271,20 +1275,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 834054299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f78a50bb4c4b47f4aa89b71b8b6bb646, type: 3}
+  m_Script: {fileID: 11500000, guid: 6659bb4b59f61524480ce71e857342a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tire: {fileID: 1669068033}
   rb: {fileID: 126498368}
   ignore_layer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   rayDidHit: 0
   rest_distance: 1
   travel_distance: 0.5
   strenght: 200000
-  damping: 5000
-  tire_radius: 0.2
+  damping: 7500
+  tire_radius: 0.3
 --- !u!114 &834054303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1294,53 +1298,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 834054299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b66c834f481b16842900d7e78f212187, type: 3}
+  m_Script: {fileID: 11500000, guid: a1da37163b731ae428c859c546512bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carInputs: {fileID: 126498373}
-  carController: {fileID: 126498374}
+  carInputs: {fileID: 126498374}
+  carController: {fileID: 126498373}
   rear_wheel: 1
-  top_speed: 50
+  backward_acceleration: 300
+  top_speed: 150
   acceleration: 500
-  backward_acceleration: 200
-  forward_power_curve:
+  power_curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0.5
-      inSlope: -0.3812176
-      outSlope: -0.3812176
-      tangentMode: 0
+      inSlope: 1.6666666
+      outSlope: 1.6666666
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 1
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.3
       value: 1
-      inSlope: 0.023190858
-      outSlope: 0.023190858
+      inSlope: 0.01819441
+      outSlope: 0.01819441
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.54500574
+      inWeight: 0.79575634
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.7
+      time: 0.6
       value: 1
-      inSlope: -0.06772755
-      outSlope: -0.06772755
+      inSlope: -0.02950547
+      outSlope: -0.02950547
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 1
+      outWeight: 0.93859667
     - serializedVersion: 3
       time: 1
       value: 0.35
-      inSlope: -0.28126928
-      outSlope: -0.28126928
-      tangentMode: 0
+      inSlope: -1.625
+      outSlope: -1.625
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 1
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1354,12 +1358,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 834054299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe47af88f066ff4090656c422b1fd6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 05cafece4c39958428b620cab4b6e0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carInputs: {fileID: 126498373}
-  carController: {fileID: 126498374}
-  tire_grip_factor: 0.8
+  carInputs: {fileID: 126498374}
+  carController: {fileID: 126498373}
+  tire_grip_factor: 1
   turnable: 0
   turn_power_curve:
     serializedVersion: 2
@@ -1518,20 +1522,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1248266102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f78a50bb4c4b47f4aa89b71b8b6bb646, type: 3}
+  m_Script: {fileID: 11500000, guid: 6659bb4b59f61524480ce71e857342a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tire: {fileID: 376438409}
   rb: {fileID: 126498368}
   ignore_layer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   rayDidHit: 0
   rest_distance: 1
   travel_distance: 0.5
   strenght: 200000
-  damping: 5000
-  tire_radius: 0.2
+  damping: 7500
+  tire_radius: 0.3
 --- !u!114 &1248266106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1541,11 +1545,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1248266102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe47af88f066ff4090656c422b1fd6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 05cafece4c39958428b620cab4b6e0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carInputs: {fileID: 126498373}
-  carController: {fileID: 126498374}
+  carInputs: {fileID: 126498374}
+  carController: {fileID: 126498373}
   tire_grip_factor: 1
   turnable: 1
   turn_power_curve:
@@ -1554,17 +1558,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.8
-      outSlope: -0.8
+      inSlope: -0.9
+      outSlope: -0.9
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0.2
-      inSlope: -0.8
-      outSlope: -0.8
+      value: 0.1
+      inSlope: -0.9
+      outSlope: -0.9
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -1581,53 +1585,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 1248266102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b66c834f481b16842900d7e78f212187, type: 3}
+  m_Script: {fileID: 11500000, guid: a1da37163b731ae428c859c546512bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carInputs: {fileID: 126498373}
-  carController: {fileID: 126498374}
+  carInputs: {fileID: 126498374}
+  carController: {fileID: 126498373}
   rear_wheel: 0
-  top_speed: 50
+  backward_acceleration: 300
+  top_speed: 150
   acceleration: 500
-  backward_acceleration: 200
-  forward_power_curve:
+  power_curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0.5
-      inSlope: -0.3812176
-      outSlope: -0.3812176
-      tangentMode: 0
+      inSlope: 1.6666666
+      outSlope: 1.6666666
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 1
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.3
       value: 1
-      inSlope: 0.023190858
-      outSlope: 0.023190858
+      inSlope: 0.01819441
+      outSlope: 0.01819441
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.54500574
+      inWeight: 0.79575634
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.7
+      time: 0.6
       value: 1
-      inSlope: -0.06772755
-      outSlope: -0.06772755
+      inSlope: -0.02950547
+      outSlope: -0.02950547
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 1
+      outWeight: 0.93859667
     - serializedVersion: 3
       time: 1
       value: 0.35
-      inSlope: -0.28126928
-      outSlope: -0.28126928
-      tangentMode: 0
+      inSlope: -1.625
+      outSlope: -1.625
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 1
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

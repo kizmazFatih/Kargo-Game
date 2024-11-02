@@ -13,6 +13,11 @@ public class GasBrake : MonoBehaviour
 
     [Header("GasBrake")]
     private float gas_input;
+    private bool hand_brake;
+    private float available_tork;
+    private float hand_brake_force;
+    [SerializeField] private bool rear_wheel;
+    [SerializeField] private float backward_acceleration;
     [SerializeField] private float top_speed;
     [SerializeField] private float acceleration;
     [SerializeField] private AnimationCurve power_curve;
@@ -39,20 +44,44 @@ public class GasBrake : MonoBehaviour
             if (suspension.rayDidHit)
             {
                 gas_input = carInputs.gas_input;
+                hand_brake = carInputs.hand_brake;
+
 
                 Vector3 accel_direction = tire.forward;
                 float car_speed = Vector3.Dot(car.forward, rb.velocity);
                 float normalized_speed = Mathf.Clamp01(Mathf.Abs(car_speed) / top_speed);
-                float available_tork = power_curve.Evaluate(normalized_speed) * gas_input * acceleration;
 
 
-                rb.AddForceAtPosition(available_tork * accel_direction * Time.fixedDeltaTime, tire.position);
 
 
-                Debug.DrawRay(tire.position, available_tork * accel_direction, Color.red);
+                if (gas_input >= 0)
+                { available_tork = power_curve.Evaluate(normalized_speed) * gas_input * acceleration; }
+                else
+                { available_tork = power_curve.Evaluate(normalized_speed) * gas_input * backward_acceleration; }
+
+                if (rear_wheel)
+                {
+                    if (hand_brake)
+                    {
+                        available_tork = 0;
+                        if (hand_brake_force > rb.velocity.magnitude)
+                        {
+                            hand_brake_force = rb.velocity.magnitude;
+                        }
+                        else
+                        {
+                            hand_brake_force = rb.mass * 0.5f * 10;
+                        }
+                    }
+                }
+
+
+
+
+
+                rb.AddForceAtPosition((available_tork - hand_brake_force) * accel_direction, tire.position);
 
             }
         }
-
     }
 }

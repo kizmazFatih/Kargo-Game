@@ -14,6 +14,7 @@ public class Steering : MonoBehaviour
     [SerializeField] private float tire_grip_factor;
     [SerializeField] private bool turnable;
     private float turn_input;
+    [SerializeField] private AnimationCurve turn_power_curve;
 
 
     void Start()
@@ -67,7 +68,8 @@ public class Steering : MonoBehaviour
     {
 
         turn_input = carInputs.turn_input;
-        float tire_angle = turn_input * 25;
+        float normalized_speed = Mathf.Clamp01(Mathf.Abs(rb.velocity.magnitude) / 40);
+        float tire_angle = turn_input * 25 * turn_power_curve.Evaluate(normalized_speed);
         tire.localRotation = Quaternion.Euler(0, tire_angle, tire.localEulerAngles.z);
     }
 }
