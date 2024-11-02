@@ -992,6 +992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carInputs: {fileID: 126498373}
   carController: {fileID: 126498374}
+  rear_wheel: 0
   top_speed: 50
   acceleration: 500
   backward_acceleration: 200
@@ -1109,6 +1110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carInputs: {fileID: 126498373}
   carController: {fileID: 126498374}
+  rear_wheel: 1
   top_speed: 50
   acceleration: 500
   backward_acceleration: 200
@@ -1297,6 +1299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carInputs: {fileID: 126498373}
   carController: {fileID: 126498374}
+  rear_wheel: 1
   top_speed: 50
   acceleration: 500
   backward_acceleration: 200
@@ -1476,6 +1479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carInputs: {fileID: 126498373}
   carController: {fileID: 126498374}
+  rear_wheel: 0
   top_speed: 50
   acceleration: 500
   backward_acceleration: 200
