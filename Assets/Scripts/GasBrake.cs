@@ -13,9 +13,11 @@ public class GasBrake : MonoBehaviour
 
     [Header("GasBrake")]
     private float gas_input;
+    private float available_tork;
     [SerializeField] private float top_speed;
-    [SerializeField] private float acceleration;
-    [SerializeField] private AnimationCurve power_curve;
+    [SerializeField] private float acceleration, backward_acceleration;
+    [SerializeField] private AnimationCurve forward_power_curve;
+
 
 
 
@@ -43,13 +45,20 @@ public class GasBrake : MonoBehaviour
                 Vector3 accel_direction = tire.forward;
                 float car_speed = Vector3.Dot(car.forward, rb.velocity);
                 float normalized_speed = Mathf.Clamp01(Mathf.Abs(car_speed) / top_speed);
-                float available_tork = power_curve.Evaluate(normalized_speed) * gas_input * acceleration;
 
 
-                rb.AddForceAtPosition(available_tork * accel_direction * Time.fixedDeltaTime, tire.position);
+                if (gas_input >= 0)
+                {
+                    available_tork = forward_power_curve.Evaluate(normalized_speed) * gas_input * acceleration;
+                }
+                else
+                {
+                    available_tork = forward_power_curve.Evaluate(normalized_speed) * gas_input * backward_acceleration;
+                }
 
 
-                Debug.DrawRay(tire.position, available_tork * accel_direction, Color.red);
+                rb.AddForceAtPosition(available_tork * accel_direction, tire.position);
+
 
             }
         }

@@ -154,9 +154,9 @@ Rigidbody:
   m_GameObject: {fileID: 126498367}
   serializedVersion: 4
   m_Mass: 100
-  m_Drag: 2
+  m_Drag: 0.5
   m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_CenterOfMass: {x: 0, y: -0.7, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -165,7 +165,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
+  m_ImplicitCom: 0
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -252,7 +252,7 @@ Transform:
   m_GameObject: {fileID: 126498367}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.19, z: 0}
+  m_LocalPosition: {x: 0, y: 2.19, z: -493.7}
   m_LocalScale: {x: 1, y: 0.5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -276,6 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gas_input: 0
   turn_input: 0
+  hand_brake: 0
 --- !u!114 &126498374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +332,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 61f25aee-63e3-4375-a8d7-742ef1eb0c6d
     m_ActionName: Car/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 126498373}
+        m_TargetAssemblyTypeName: CarInputs, Assembly-CSharp
+        m_MethodName: HandBrake
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6e73e857-2136-44ee-a653-3e6a87085d4f
+    m_ActionName: Car/HandBrake[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Car
@@ -422,8 +439,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.36729217, y: 0.021204442, z: -0.008376494, w: 0.9298262}
-  m_LocalPosition: {x: -0.24707124, y: 6.9107966, z: -6.338754}
+  m_LocalRotation: {x: 0.2811106, y: -0.017257089, z: 0.005103799, w: 0.95950663}
+  m_LocalPosition: {x: 0.1422221, y: 6.653783, z: -501.64273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -484,7 +501,6 @@ GameObject:
   - component: {fileID: 376438409}
   - component: {fileID: 376438412}
   - component: {fileID: 376438411}
-  - component: {fileID: 376438410}
   m_Layer: 3
   m_Name: Wheel FL
   m_TagString: Untagged
@@ -500,36 +516,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376438408}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.04, y: -3.18, z: 1.424}
-  m_LocalScale: {x: 2, y: 0.10000002, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1248266103}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!136 &376438410
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376438408}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &376438411
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -579,7 +572,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376438408}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +792,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalScale: {x: 5, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -815,7 +808,6 @@ GameObject:
   - component: {fileID: 456449984}
   - component: {fileID: 456449987}
   - component: {fileID: 456449986}
-  - component: {fileID: 456449985}
   m_Layer: 3
   m_Name: Wheel FR
   m_TagString: Untagged
@@ -831,36 +823,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456449983}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.18, z: -1.166}
-  m_LocalScale: {x: 2, y: 0.10000001, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 470477772}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!136 &456449985
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 456449983}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &456449986
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -910,7 +879,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456449983}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &470477771
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,7 +936,7 @@ MonoBehaviour:
   rest_distance: 1
   travel_distance: 0.5
   strenght: 200000
-  damping: 7500
+  damping: 5000
   tire_radius: 0.2
 --- !u!114 &470477775
 MonoBehaviour:
@@ -976,7 +945,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470477771}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fe47af88f066ff4090656c422b1fd6f, type: 3}
   m_Name: 
@@ -985,6 +954,30 @@ MonoBehaviour:
   carController: {fileID: 126498374}
   tire_grip_factor: 1
   turnable: 1
+  turn_power_curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.8
+      outSlope: -0.8
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.2
+      inSlope: -0.8
+      outSlope: -0.8
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &470477776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,28 +992,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carInputs: {fileID: 126498373}
   carController: {fileID: 126498374}
-  top_speed: 250
+  top_speed: 50
   acceleration: 500
-  power_curve:
+  backward_acceleration: 200
+  forward_power_curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 10
-      inSlope: 740
-      outSlope: 740
-      tangentMode: 34
+      value: 0.5
+      inSlope: -0.3812176
+      outSlope: -0.3812176
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 1
     - serializedVersion: 3
-      time: 1
-      value: 750
-      inSlope: 740
-      outSlope: 740
-      tangentMode: 34
+      time: 0.3
+      value: 1
+      inSlope: 0.023190858
+      outSlope: 0.023190858
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
+      outWeight: 0.54500574
+    - serializedVersion: 3
+      time: 0.7
+      value: 1
+      inSlope: -0.06772755
+      outSlope: -0.06772755
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1
+      value: 0.35
+      inSlope: -0.28126928
+      outSlope: -0.28126928
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1035,6 +1047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 471216795}
   - component: {fileID: 471216797}
+  - component: {fileID: 471216799}
   - component: {fileID: 471216798}
   m_Layer: 3
   m_Name: BR
@@ -1080,7 +1093,7 @@ MonoBehaviour:
   rest_distance: 1
   travel_distance: 0.5
   strenght: 200000
-  damping: 7500
+  damping: 5000
   tire_radius: 0.2
 --- !u!114 &471216798
 MonoBehaviour:
@@ -1096,29 +1109,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carInputs: {fileID: 126498373}
   carController: {fileID: 126498374}
-  top_speed: 250
+  top_speed: 50
   acceleration: 500
-  power_curve:
+  backward_acceleration: 200
+  forward_power_curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 10
-      inSlope: 740
-      outSlope: 740
-      tangentMode: 34
+      value: 0.5
+      inSlope: -0.3812176
+      outSlope: -0.3812176
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 1
     - serializedVersion: 3
-      time: 1
-      value: 750
-      inSlope: 740
-      outSlope: 740
-      tangentMode: 34
+      time: 0.3
+      value: 1
+      inSlope: 0.023190858
+      outSlope: 0.023190858
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
+      outWeight: 0.54500574
+    - serializedVersion: 3
+      time: 0.7
+      value: 1
+      inSlope: -0.06772755
+      outSlope: -0.06772755
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1
+      value: 0.35
+      inSlope: -0.28126928
+      outSlope: -0.28126928
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
       outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &471216799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471216794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe47af88f066ff4090656c422b1fd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carInputs: {fileID: 126498373}
+  carController: {fileID: 126498374}
+  tire_grip_factor: 0.8
+  turnable: 0
+  turn_power_curve:
+    serializedVersion: 2
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1181,6 +1235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 834054300}
   - component: {fileID: 834054302}
+  - component: {fileID: 834054304}
   - component: {fileID: 834054303}
   m_Layer: 3
   m_Name: BL
@@ -1226,7 +1281,7 @@ MonoBehaviour:
   rest_distance: 1
   travel_distance: 0.5
   strenght: 200000
-  damping: 7500
+  damping: 5000
   tire_radius: 0.2
 --- !u!114 &834054303
 MonoBehaviour:
@@ -1242,29 +1297,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carInputs: {fileID: 126498373}
   carController: {fileID: 126498374}
-  top_speed: 250
+  top_speed: 50
   acceleration: 500
-  power_curve:
+  backward_acceleration: 200
+  forward_power_curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 10
-      inSlope: 740
-      outSlope: 740
-      tangentMode: 34
+      value: 0.5
+      inSlope: -0.3812176
+      outSlope: -0.3812176
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 1
     - serializedVersion: 3
-      time: 1
-      value: 750
-      inSlope: 740
-      outSlope: 740
-      tangentMode: 34
+      time: 0.3
+      value: 1
+      inSlope: 0.023190858
+      outSlope: 0.023190858
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
+      outWeight: 0.54500574
+    - serializedVersion: 3
+      time: 0.7
+      value: 1
+      inSlope: -0.06772755
+      outSlope: -0.06772755
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1
+      value: 0.35
+      inSlope: -0.28126928
+      outSlope: -0.28126928
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
       outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &834054304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834054299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe47af88f066ff4090656c422b1fd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carInputs: {fileID: 126498373}
+  carController: {fileID: 126498374}
+  tire_grip_factor: 0.8
+  turnable: 0
+  turn_power_curve:
+    serializedVersion: 2
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1324,7 +1420,7 @@ MonoBehaviour:
   rest_distance: 1
   travel_distance: 0.5
   strenght: 200000
-  damping: 7500
+  damping: 5000
   tire_radius: 0.2
 --- !u!114 &1248266106
 MonoBehaviour:
@@ -1333,7 +1429,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248266102}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fe47af88f066ff4090656c422b1fd6f, type: 3}
   m_Name: 
@@ -1342,6 +1438,30 @@ MonoBehaviour:
   carController: {fileID: 126498374}
   tire_grip_factor: 1
   turnable: 1
+  turn_power_curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.8
+      outSlope: -0.8
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.2
+      inSlope: -0.8
+      outSlope: -0.8
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &1248266107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,28 +1476,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carInputs: {fileID: 126498373}
   carController: {fileID: 126498374}
-  top_speed: 250
+  top_speed: 50
   acceleration: 500
-  power_curve:
+  backward_acceleration: 200
+  forward_power_curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 10
-      inSlope: 740
-      outSlope: 740
-      tangentMode: 34
+      value: 0.5
+      inSlope: -0.3812176
+      outSlope: -0.3812176
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 1
     - serializedVersion: 3
-      time: 1
-      value: 750
-      inSlope: 740
-      outSlope: 740
-      tangentMode: 34
+      time: 0.3
+      value: 1
+      inSlope: 0.023190858
+      outSlope: 0.023190858
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
+      outWeight: 0.54500574
+    - serializedVersion: 3
+      time: 0.7
+      value: 1
+      inSlope: -0.06772755
+      outSlope: -0.06772755
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1
+      value: 0.35
+      inSlope: -0.28126928
+      outSlope: -0.28126928
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1481,7 +1620,7 @@ Transform:
   m_GameObject: {fileID: 1636420133}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.38, y: 1.06, z: 7.63}
+  m_LocalPosition: {x: 4.38, y: 0.97, z: 7.63}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1498,7 +1637,6 @@ GameObject:
   - component: {fileID: 1669068033}
   - component: {fileID: 1669068036}
   - component: {fileID: 1669068035}
-  - component: {fileID: 1669068034}
   m_Layer: 3
   m_Name: Wheel BL
   m_TagString: Untagged
@@ -1514,36 +1652,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669068032}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.03, y: -3.18, z: 0.7}
-  m_LocalScale: {x: 2, y: 0.10000003, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 834054300}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!136 &1669068034
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669068032}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1669068035
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1593,7 +1708,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669068032}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1967296616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,7 +1720,6 @@ GameObject:
   - component: {fileID: 1967296617}
   - component: {fileID: 1967296620}
   - component: {fileID: 1967296619}
-  - component: {fileID: 1967296618}
   m_Layer: 3
   m_Name: Wheel BR
   m_TagString: Untagged
@@ -1621,36 +1735,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967296616}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.18, z: 0.7}
-  m_LocalScale: {x: 2, y: 0.100000024, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 471216795}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!136 &1967296618
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967296616}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1967296619
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1700,7 +1791,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967296616}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
