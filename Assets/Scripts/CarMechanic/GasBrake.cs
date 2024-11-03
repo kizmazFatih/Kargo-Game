@@ -15,7 +15,7 @@ public class GasBrake : MonoBehaviour
     private float gas_input;
     private bool hand_brake;
     private float available_tork;
-    private float hand_brake_force;
+    private Vector3 hand_brake_force = Vector3.zero;
     [SerializeField] private bool rear_wheel;
     [SerializeField] private float backward_acceleration;
     [SerializeField] private float top_speed;
@@ -64,22 +64,32 @@ public class GasBrake : MonoBehaviour
                     if (hand_brake)
                     {
                         available_tork = 0;
-                        if (hand_brake_force > rb.velocity.magnitude)
-                        {
-                            hand_brake_force = rb.velocity.magnitude;
-                        }
-                        else
-                        {
-                            hand_brake_force = rb.mass * 0.5f * 10;
-                        }
+                        /* if (hand_brake_force > rb.velocity.magnitude)
+                         {
+                             hand_brake_force = rb.velocity.magnitude;
+                         }
+                         else
+                         {
+                             hand_brake_force = rb.mass * 0.5f * 10;
+                         }*/
+
+                        hand_brake_force = -100 * rb.velocity;
+
+
+                    }
+                    else
+                    {
+                        hand_brake_force = Vector3.zero;
                     }
                 }
 
+                Debug.Log(((available_tork * accel_direction) + hand_brake_force).magnitude);
 
 
 
 
-                rb.AddForceAtPosition((available_tork - hand_brake_force) * accel_direction, tire.position);
+
+                rb.AddForceAtPosition((available_tork * accel_direction) + hand_brake_force, tire.position);
 
             }
         }
