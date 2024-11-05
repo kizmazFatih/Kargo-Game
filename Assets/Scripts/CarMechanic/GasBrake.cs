@@ -12,6 +12,7 @@ public class GasBrake : MonoBehaviour
     private Rigidbody rb;
 
     [Header("GasBrake")]
+
     private float gas_input;
     private bool hand_brake;
     private float available_tork;
@@ -59,32 +60,32 @@ public class GasBrake : MonoBehaviour
                 else
                 { available_tork = power_curve.Evaluate(normalized_speed) * gas_input * backward_acceleration; }
 
-                if (rear_wheel)
+
+                if (hand_brake)
                 {
-                    if (hand_brake)
+                    available_tork = 0;
+
+                    float forwardForceMagnitude = Vector3.Dot(rb.velocity, rb.transform.forward);
+                    hand_brake_force = tire.forward * -forwardForceMagnitude * 150;
+
+                    if (rear_wheel)
                     {
-                        available_tork = 0;
-                        /* if (hand_brake_force > rb.velocity.magnitude)
-                         {
-                             hand_brake_force = rb.velocity.magnitude;
-                         }
-                         else
-                         {
-                             hand_brake_force = rb.mass * 0.5f * 10;
-                         }*/
-
-                        hand_brake_force = -100 * rb.velocity;
-
-
+                        float rightForceMagnitude = Vector3.Dot(rb.velocity, rb.transform.right);
+                        hand_brake_force += rightForceMagnitude * tire.right * 30;
                     }
-                    else
-                    {
-                        hand_brake_force = Vector3.zero;
-                    }
+
+
+
+                    hand_brake_force = Vector3.Lerp(hand_brake_force, Vector3.zero, 0.6f);
+
+
+
+
                 }
-
-                Debug.Log(((available_tork * accel_direction) + hand_brake_force).magnitude);
-
+                else
+                {
+                    hand_brake_force = Vector3.zero;
+                }
 
 
 

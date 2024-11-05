@@ -11,7 +11,7 @@ public class Steering : MonoBehaviour
     private Rigidbody rb;
 
     [Header("Steering")]
-    [SerializeField] private float tire_grip_factor;
+    public float tire_grip_factor;
     [SerializeField] private bool turnable;
     private float turn_input;
     [SerializeField] private AnimationCurve turn_power_curve;
@@ -52,7 +52,7 @@ public class Steering : MonoBehaviour
                 float desired_acceleration = desired_velocity_change / Time.fixedDeltaTime;
 
 
-                rb.AddForceAtPosition(desired_acceleration * steering_direction * 50*Time.fixedDeltaTime, tire.position);
+                rb.AddForceAtPosition(desired_acceleration * steering_direction * 50 * Time.fixedDeltaTime, tire.position);
 
 
             }
