@@ -8,6 +8,13 @@ public class CarrySystem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+        if (other.gameObject.GetComponent<Usebul>() != null)
+        {
+            other.gameObject.GetComponent<Usebul>().ShowMyProgressBar();
+        }
+
+
         if (other.CompareTag("Box")) // Kutuya temas
         {
             // Eğer bu kutu daha önce alınmamışsa
@@ -19,7 +26,15 @@ public class CarrySystem : MonoBehaviour
         }
     }
 
-   
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<Usebul>() != null)
+        {
+            other.gameObject.GetComponent<Usebul>().ResetProgressBarValue();
+        }
+    }
+
+
 
     private void PositionBoxes()
     {

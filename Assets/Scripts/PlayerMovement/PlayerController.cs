@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,16 +31,18 @@ public class PlayerController : MonoBehaviour
         ApplyMovement();
     }
 
+
+
     private void ApplyGravity()
     {
-        if (_characterController.isGrounded && _velocity < 0.0f )
+        if (_characterController.isGrounded && _velocity < 0.0f)
         {
             _velocity = -1.0f;
         }
         else
         {
             _velocity += _gravity * gravityMultiplier * Time.deltaTime;
-        } 
+        }
         _direction.y = _velocity;
     }
 
