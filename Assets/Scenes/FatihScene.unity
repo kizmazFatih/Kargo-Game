@@ -527,14 +527,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323634057}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3804923, y: 0.098787144, z: -0.040892396, w: 0.9185829}
-  m_LocalPosition: {x: -1.164444, y: 9.635281, z: -5.6512003}
+  m_LocalRotation: {x: 0.38058707, y: 0.096571706, z: -0.04000131, w: 0.9188185}
+  m_LocalPosition: {x: -1.1241897, y: 9.635282, z: -5.6598573}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1471979564}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 45, y: 12.278, z: 0.004}
+  m_LocalEulerAnglesHint: {x: 45, y: 12, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,13 +622,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3804923, y: 0.098787144, z: -0.040892396, w: 0.9185829}
-  m_LocalPosition: {x: -1.164444, y: 9.635281, z: -5.6512003}
+  m_LocalRotation: {x: 0.38058707, y: 0.096571706, z: -0.04000131, w: 0.9188185}
+  m_LocalPosition: {x: -1.12419, y: 9.6352825, z: -5.659857}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 45, y: 50, z: 0.004}
+  m_LocalEulerAnglesHint: {x: 45, y: 12, z: 0.004}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,10 +972,35 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3183781345430523400, guid: 6e1a4601422c92a4a83b3dcdf24c2f3c,
+        type: 3}
+      propertyPath: ignore_layer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379217127809722153, guid: 6e1a4601422c92a4a83b3dcdf24c2f3c,
+        type: 3}
+      propertyPath: ignore_layer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759649332404465166, guid: 6e1a4601422c92a4a83b3dcdf24c2f3c,
+        type: 3}
+      propertyPath: ignore_layer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4728507956008343655, guid: 6e1a4601422c92a4a83b3dcdf24c2f3c,
         type: 3}
       propertyPath: m_Name
       value: Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728507956008343655, guid: 6e1a4601422c92a4a83b3dcdf24c2f3c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987055704414539533, guid: 6e1a4601422c92a4a83b3dcdf24c2f3c,
+        type: 3}
+      propertyPath: ignore_layer.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8102285164930226555, guid: 6e1a4601422c92a4a83b3dcdf24c2f3c,
         type: 3}
@@ -1145,7 +1170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1241521230}
-  cooldown: 3
+  cooldown: 1
 --- !u!1 &986040204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,7 +1365,7 @@ GameObject:
   - component: {fileID: 1431828994}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1998,6 +2023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf71d9f277a883148901df79164c38bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  virtual_cam: {fileID: 323634058}
   action_asset: {fileID: -944628639613478452, guid: 193f4dc00d6d1324c8625d58c59e962b,
     type: 3}
 --- !u!1 &1948043035

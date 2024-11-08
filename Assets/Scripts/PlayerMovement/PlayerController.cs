@@ -59,9 +59,13 @@ public class PlayerController : MonoBehaviour
         _characterController.Move(_direction * speed * Time.deltaTime);
     }
 
+
+
+    #region Input
     public void Move(InputAction.CallbackContext context)
     {
         _input = context.ReadValue<Vector2>();
         _direction = new Vector3(_input.x, 0.0f, _input.y);
     }
+    #endregion
 }

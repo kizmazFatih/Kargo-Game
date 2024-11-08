@@ -54,11 +54,13 @@ public class Suspension : MonoBehaviour
                 Debug.DrawRay(transform.position, -tire_dir * hit.distance, Color.green);
                 rb.AddForceAtPosition(suspension_force * tire_dir * Time.fixedDeltaTime, tire.position);
 
+
             }
-            else
-            {
-                rayDidHit = false;
-            }
+
+        }
+        else
+        {
+            rayDidHit = false;
         }
     }
 

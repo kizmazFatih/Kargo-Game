@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CarrySystem : MonoBehaviour
 {
+    private int capacity = 2; //Karakterin taşıyabileceği max kutu sayısı
     public Transform targetPosition; // Kutu konumunun alınacağı boş obje
     private List<GameObject> carriedBoxes = new List<GameObject>(); // Taşınan kutuların listesi
 
@@ -17,6 +18,7 @@ public class CarrySystem : MonoBehaviour
 
         if (other.CompareTag("Box")) // Kutuya temas
         {
+            if (carriedBoxes.Count >= capacity) return;
             // Eğer bu kutu daha önce alınmamışsa
             if (!carriedBoxes.Contains(other.gameObject))
             {
@@ -44,12 +46,6 @@ public class CarrySystem : MonoBehaviour
         currentBox.transform.SetParent(targetPosition); // İlk kutuyu Target objesine child yap
         currentBox.transform.localPosition = Vector3.zero + new Vector3(0, carriedBoxes.Count - 1, 0); // İlk kutuyu hedefin konumuna yerleştir
         currentBox.transform.rotation = targetPosition.rotation; // İlk kutunun açısını ayarla
-
-
-
-
-
-
 
     }
 }

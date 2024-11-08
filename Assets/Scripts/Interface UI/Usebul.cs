@@ -42,6 +42,7 @@ public class Usebul : MonoBehaviour, IUsebul
 
     void MyJob()
     {
-        PawnSwitcher.instance.CarActive();
+        PawnSwitcher.instance.CarActive(transform);
+        ResetProgressBarValue();
     }
 }
